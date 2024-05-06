@@ -8,6 +8,7 @@ export enum MetricType {
   Summary,
 }
 
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 export interface MetricTypeConfigurationInterface {
   type: MetricType;
   configuration?: any;

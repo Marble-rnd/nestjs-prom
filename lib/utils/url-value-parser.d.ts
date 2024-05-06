@@ -1,4 +1,4 @@
-declare module "url-value-parser" {
+declare module 'url-value-parser' {
   interface ValueDetectorOptions {
     extraMasks?: Array<RegExp>;
   }

@@ -1,6 +1,15 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
+## 2.0.0 - 2024-05-06
+### BREAKING CHANGE
+- Move prom-client to peer dependencies
+- Remove @nest/* packages from dependencies
+- Upgrade nest dependencies to `^8.0.0`
+### Chors
+- upgrade prom-client
+  - pass empty labels by default on counter and gauge as prom-client doe fails to deal with explicitly passing undefined
+
 
 ## 1.0.0 - 2020-10-23
 

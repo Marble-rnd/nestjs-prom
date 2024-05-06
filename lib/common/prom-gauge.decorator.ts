@@ -16,7 +16,7 @@ export const PromGauge = createParamDecorator((data: IMetricArguments | string) 
   }
 
   if (!arg.name || arg.name.length === 0) {
-    throw new Error(`PromGauge need an argument, must be a fulfilled string or IPromGaugeDecoratorArg instance`);
+    throw new Error('PromGauge need an argument, must be a fulfilled string or IPromGaugeDecoratorArg instance');
   }
 
   return findOrCreateGauge(arg as IMetricArguments);

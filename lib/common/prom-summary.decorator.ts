@@ -16,7 +16,7 @@ export const PromSummary = createParamDecorator((data: IMetricArguments | string
   }
 
   if (!arg.name || arg.name.length === 0) {
-    throw new Error(`PromSummary need an argument, must be a fulfilled string or IPromSummaryDecoratorArg instance`);
+    throw new Error('PromSummary need an argument, must be a fulfilled string or IPromSummaryDecoratorArg instance');
   }
 
   return findOrCreateSummary(arg as IMetricArguments);

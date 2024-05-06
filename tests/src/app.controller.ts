@@ -51,7 +51,7 @@ export class AppController {
 
   @Get('PromInstanceCounter_1')
   PromInstanceCounter_1() {
-    const objInstance = new MyObj(); // increment app_MyObj_instances_total
+    new MyObj(); // increment app_MyObj_instances_total
     return 'PromInstanceCounter_1';
   }
 
@@ -143,10 +143,10 @@ export class AppController {
 
     return 'test';
   }
-  
+
   @Get('fobidden')
   forbidden() {
     throw new HttpException('error testing', HttpStatus.FORBIDDEN);
   }
-  
+
 }
