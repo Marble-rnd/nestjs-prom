@@ -1,4 +1,5 @@
 export interface PromModuleOptions {
+  /* eslint-disable  @typescript-eslint/no-explicit-any */
   [key: string]: any;
 
   /**

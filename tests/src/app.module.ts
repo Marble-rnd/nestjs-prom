@@ -1,7 +1,7 @@
-import { NestModule, MiddlewareConsumer, Module, RequestMethod } from "@nestjs/common";
-import { PromModule, InboundMiddleware } from '../../lib';
-import { AppService } from "./app.service";
-import { AppController } from "./app.controller";
+import {  Module } from '@nestjs/common';
+import { PromModule } from '../../lib';
+import { AppService } from './app.service';
+import { AppController } from './app.controller';
 
 @Module({
     imports: [

@@ -1,7 +1,7 @@
-import { Server } from "http";
-import { INestApplication } from "@nestjs/common";
+import { Server } from 'http';
+import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
-import { AppModule } from "../src/app.module";
+import { AppModule } from '../src/app.module';
 import * as request from 'supertest';
 
 describe('PromModule', () => {
@@ -25,7 +25,7 @@ describe('PromModule', () => {
       .get(metricPath)
       .expect(200)
       .expect('Content-Type', /text\/plain/) // expect correct content-type
-      .expect(/app=\"v1\.0\.0\"/) // expect having defaultLabels
+      .expect(/app="v1\.0\.0"/) // expect having defaultLabels
       .end((err) => {
         if (err) {
           throw err;
@@ -136,7 +136,7 @@ describe('PromModule', () => {
   });
 
   // app_MyObj_instances_total
-  describe(`@PromInstanceCounter()`, () => {
+  describe('@PromInstanceCounter()', () => {
     it(`app_MyObj_instances_total not defined in ${metricPath}`, (done) => {
       request(server)
         .get(metricPath)
@@ -169,7 +169,7 @@ describe('PromModule', () => {
     });
   });
 
-  describe(`@PromGauge()`, () => {
+  describe('@PromGauge()', () => {
     it(`app_test_gauge_1 not defined in ${metricPath}`, (done) => {
       request(server)
         .get(metricPath)

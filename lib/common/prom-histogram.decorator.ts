@@ -16,7 +16,7 @@ export const PromHistogram = createParamDecorator((data: IMetricArguments | stri
   }
 
   if (!arg.name || arg.name.length === 0) {
-    throw new Error(`PromHistogram need an argument, must be a fulfilled string or IPromHistogramDecoratorArg instance`);
+    throw new Error('PromHistogram need an argument, must be a fulfilled string or IPromHistogramDecoratorArg instance');
   }
 
   return findOrCreateHistogram(arg as IMetricArguments);

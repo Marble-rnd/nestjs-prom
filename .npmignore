@@ -6,3 +6,7 @@ tslint.json
 tsconfig.json
 .prettierrc
 example
+.eslintrc.js
+.github/*
+.idea/*
+tests/*

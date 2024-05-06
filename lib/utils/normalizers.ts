@@ -24,7 +24,7 @@ export function normalizeRoute(req,includeQueryParams = false): string {
 
 
   if (req.route) {
-    let endpointRoutePath = req.route.path;
+    const endpointRoutePath = req.route.path;
     if (endpointRoutePath == '/*') {
       // that means the requested route doesn't exist
       return 'unknown';
@@ -38,7 +38,7 @@ export function normalizeRoute(req,includeQueryParams = false): string {
 
     let originalUrl = req.originalUrl;
 
-    let lastUrlChar = originalUrl.substr(originalUrl.length - 1);
+    const lastUrlChar = originalUrl.substr(originalUrl.length - 1);
     // remove redundant trailing slash
     if (lastUrlChar === '/') {
       originalUrl = originalUrl.substr(0, originalUrl.length - 1);

@@ -60,19 +60,20 @@ export function findOrCreateMetric({
 }): GenericMetric {
 
   const register = registry ?? getDefaultRegistry();
-  let metric: GenericMetric = register.getSingleMetric(name);
+  const metric: GenericMetric = register.getSingleMetric(name);
 
   switch (type) {
-    case "Gauge":
+    case 'Gauge': {
       if (metric && metric instanceof client.Gauge) {
         return metric;
       }
       return new client.Gauge({
         name: name,
         help: help || `${name} ${type}`,
-        labelNames,
+        labelNames: labelNames ?? [],
       });
-    case "Histogram":
+    }
+    case 'Histogram': {
       if (metric && metric instanceof client.Histogram) {
         return metric;
       }
@@ -85,7 +86,8 @@ export function findOrCreateMetric({
         histogramConfig['buckets'] = buckets;
       }
       return new client.Histogram(histogramConfig);
-    case "Summary":
+    }
+    case 'Summary': {
       if (metric && metric instanceof client.Summary) {
         return metric;
       }
@@ -94,7 +96,8 @@ export function findOrCreateMetric({
         help: help || `${name} ${type}`,
         labelNames,
       });
-    case "Counter":
+    }
+    case 'Counter':
     default:
       if (metric && metric instanceof client.Counter) {
         return metric;
@@ -102,7 +105,7 @@ export function findOrCreateMetric({
       return new client.Counter({
         name: name,
         help: help || `${name} ${type}`,
-        labelNames,
+        labelNames: labelNames ?? [] ,
       });
   }
 }
@@ -110,27 +113,27 @@ export function findOrCreateMetric({
 export function findOrCreateCounter(args: IMetricArguments): CounterMetric {
   return findOrCreateMetric({
     ...args,
-    type: `Counter`,
+    type: 'Counter',
   }) as CounterMetric;
 }
 
 export function findOrCreateGauge(args: IMetricArguments): GaugeMetric {
   return findOrCreateMetric({
     ...args,
-    type: `Gauge`,
+    type: 'Gauge',
   }) as GaugeMetric;
 }
 
 export function findOrCreateHistogram(args: IHistogramMetricArguments): HistogramMetric {
   return findOrCreateMetric({
     ...args,
-    type: `Histogram`,
+    type: 'Histogram',
   }) as HistogramMetric;
 }
 
 export function findOrCreateSummary(args: IMetricArguments): SummaryMetric {
   return findOrCreateMetric({
     ...args,
-    type: `Summary`,
+    type: 'Summary',
   }) as SummaryMetric;
 }

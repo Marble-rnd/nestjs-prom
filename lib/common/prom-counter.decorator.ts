@@ -16,7 +16,7 @@ export const PromCounter = createParamDecorator((data: IMetricArguments | string
   }
 
   if (!arg.name || arg.name.length === 0) {
-    throw new Error(`PromCounter need an argument, must be a fulfilled string or IPromCounterDecoratorArg instance`);
+    throw new Error('PromCounter need an argument, must be a fulfilled string or IPromCounterDecoratorArg instance');
   }
 
   return findOrCreateCounter(arg as IMetricArguments);

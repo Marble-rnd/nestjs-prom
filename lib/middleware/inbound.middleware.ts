@@ -29,7 +29,7 @@ export class InboundMiddleware implements NestMiddleware {
 
   use(req, res, next) {
     responseTime((req, res, time) => {
-      const { url, method } = req;
+      const {  method } = req;
       const path = normalizeRoute(req, this._options.includeQueryParams);
       if (path === '/favicon.ico') {
         return;

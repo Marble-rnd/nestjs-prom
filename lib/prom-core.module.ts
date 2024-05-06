@@ -10,8 +10,13 @@ import { PromModuleOptions } from './interfaces';
 import { DEFAULT_PROM_REGISTRY, PROM_REGISTRY_NAME, DEFAULT_PROM_OPTIONS } from './prom.constants';
 
 import * as client from 'prom-client';
-import { Registry, collectDefaultMetrics, DefaultMetricsCollectorConfiguration } from 'prom-client';
-import { getRegistryName } from './common/prom.utils';
+import {
+  Registry,
+  collectDefaultMetrics,
+  DefaultMetricsCollectorConfiguration,
+  PrometheusContentType,
+} from 'prom-client';
+import { getRegistryName } from './common';
 import { InboundMiddleware } from './middleware';
 import { PromService } from './prom.service';
 
@@ -60,7 +65,7 @@ export class PromCoreModule implements NestModule {
         }
 
         if (withDefaultsMetrics !== false) {
-          const defaultMetricsOptions: DefaultMetricsCollectorConfiguration = {
+          const defaultMetricsOptions: DefaultMetricsCollectorConfiguration<PrometheusContentType> = {
             register: registry,
           };
           if (prefix) {

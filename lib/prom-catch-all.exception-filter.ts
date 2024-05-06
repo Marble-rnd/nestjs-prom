@@ -11,17 +11,6 @@ import { normalizeRoute } from './utils';
 import { PromService } from './prom.service';
 import { DEFAULT_PROM_OPTIONS } from './prom.constants';
 
-function getBaseUrl(url?: string) {
-  if (!url) {
-    return url;
-  }
-
-  if (url.indexOf('?') === -1) {
-    return url;
-  }
-  return url.split('?')[0];
-}
-
 @Catch()
 export class PromCatchAllExceptionsFilter extends BaseExceptionFilter {
   private readonly _counter: CounterMetric;

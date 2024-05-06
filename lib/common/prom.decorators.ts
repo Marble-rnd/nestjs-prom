@@ -5,6 +5,7 @@ import { IMetricArguments, CounterMetric } from '../interfaces';
  * Create and increment a counter when the method is called
  */
 export const PromMethodCounter = (params?: IMetricArguments) => {
+    /* eslint-disable  @typescript-eslint/no-explicit-any */
     return (target: Object, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<(...args: any[]) => any>) => {
         const className = target.constructor.name;
         const name = `app_${className}_${propertyKey.toString()}_calls_total`;
@@ -13,7 +14,7 @@ export const PromMethodCounter = (params?: IMetricArguments) => {
         const methodFunc = descriptor.value;
         descriptor.value = function (...args: any[]) {
             if (!counterMetric) {
-                counterMetric = findOrCreateCounter({ 
+                counterMetric = findOrCreateCounter({
                     name,
                     help,
                     ...params,
@@ -28,7 +29,7 @@ export const PromMethodCounter = (params?: IMetricArguments) => {
 /**
  * Create and increment a counter when a new instance is created
  *
- * @param ctor
+ * @param params
  */
 export const PromInstanceCounter = (params?: IMetricArguments) => {
     return <T extends { new(...args: any[]): {} }>(ctor: T) => {
