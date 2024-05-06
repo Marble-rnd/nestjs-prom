@@ -72,5 +72,9 @@
   ],
   "publishConfig": {
     "tag": "next"
-  }
+  },
+  "files": [
+    "./dist/",
+    "./package.json"
+  ]
 }
